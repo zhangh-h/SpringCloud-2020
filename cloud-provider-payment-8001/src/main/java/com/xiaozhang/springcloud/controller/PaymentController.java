@@ -71,10 +71,10 @@ public class PaymentController {
         return this.discoveryClient;
     }
 
-
     @GetMapping(value = "/feign/timeout")
     public String paymentFeignTimeout()
     {
+        log.info("8001调度成功！！！");
         // 业务逻辑处理正确，但是需要耗费3秒钟
         try { TimeUnit.SECONDS.sleep(3); } catch (InterruptedException e) { e.printStackTrace(); }
         return serverPort;
@@ -95,4 +95,5 @@ public class PaymentController {
     public String paymentConsul(){
         return "springcloud with conusl: " + serverPort + "\t " + UUID.randomUUID().toString();
     }
+
 }
