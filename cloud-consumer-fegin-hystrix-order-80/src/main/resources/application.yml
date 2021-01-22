@@ -1,0 +1,25 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    ##是否将自己注入进Eureka，默认为true
+    register-with-eureka: false
+    ##从Eureka中获取注册信息
+    fetch-registry: true
+    service-url:
+      # 集群
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka  # 集群版
+#--------------Feign负载均衡配置 配置全局超时时间 毫秒单位   根据业务酌情配置
+ribbon:
+  ConnectTimeout: 50000 #请求连接的超时时间，默认时间为1秒
+  ReadTimeout: 50000 #请求处理的超时时间
+
+################  Fegin打印请求日志篇日志 ################
+logging:
+  level:
+    com.xiaozhang.springcloud.service: debug    #将Fegin接口的日志级别设置为debug级别，因为logging.level只对DEBUG  做出响应
+feign:
+  client:
+    config:
+      CLOUD-PAYMENT-HYSTRIX-SERVICE.loggerLevel: full  #cloud-payment-service为feginName
