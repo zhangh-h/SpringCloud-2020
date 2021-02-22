@@ -1,0 +1,29 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-center #注册进Eureka服务名
+
+  devtools:
+    add-properties: false
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/gitee_zhangh/springcloud-config.git #Gitee上面的git仓库名字
+          ####搜索目录
+          search-paths:
+            - config
+      ####读取分支
+      label: master
+
+
+#服务注册进Eureka
+eureka:
+  client:
+    #是否将自己注入进Eureka
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+
