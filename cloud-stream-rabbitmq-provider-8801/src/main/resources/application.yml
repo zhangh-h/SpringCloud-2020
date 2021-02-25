@@ -1,0 +1,32 @@
+server:
+  port: 8801
+
+spring:
+  application:
+    name: cloud-sytream-provider
+  rabbitmq:
+    host: 192.168.174.133
+    port: 5672
+    username: root
+    password: root
+  cloud:
+    stream:
+      binders: ##此处配置绑定器信息
+        defaultRabbit: #消息定义的名称
+          type: rabbit #消息组件类型
+      bindings: # 服务的整合处理
+        output: # 这个名字是一个通道的名称
+          destination: studyExchange # 表示要使用的Exchange名称定义
+          content-type: application/json # 设置消息类型，本次为json，文本则设置“text/plain”
+          binder: defaultRabbit # 设置要绑定的消息服务的具体设置
+
+###Eureka相关配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 2 #设置心跳间隔s
+    lease-expiration-duration-in-seconds: 5 #表示 Eureka Server 在接收到上一个心跳之后等待下一个心跳的秒数（默认 90 秒），若不能在指定时间内收到心跳，则移除此实例，并禁止此实例的流量。
+    instance-id: send-8801 #显示主机名称
+    prefer-ip-address: true #访问路径为IP地址
