@@ -4,20 +4,25 @@ spring:
   application:
     name: cloud-config-client
   cloud:
-    ###config客户端配置
+    #config客户端配置
     config:
       label: master  #分支名
       name: bootstrap #配置文件名
-      profile: test #读取文件后缀       上述配置读取文件为 http://localhost:3344/master/bootstrap-dev
+      profile: test #读取文件后缀       上述配置读取文件为 http://localhost:3344/master/bootstrap-test.yml
       uri: http://127.0.0.1:3344  #配置中心地址
 
+  #rabbitmq相关配置 15672是Web管理界面的端口；5672是MQ访问的端口
+  rabbitmq:
+    host: 192.168.174.133
+    port: 5672
+    username: root
+    password: root
 
-##服务注册到Eureka
+#服务注册到Eureka
 eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:7001/eureka
-
 
 #在Spring Boot升级到2.0.3.RELEASE后需新增配置,此时更新置文件后，需要手动的发送post请求进行刷新：http://localhost:3355/actuator/refresh
 management:
