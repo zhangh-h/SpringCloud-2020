@@ -8,8 +8,8 @@ eureka:
     ##从Eureka中获取注册信息
     fetch-registry: true
     service-url:
-        # 集群
-        defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka  # 集群版
+      # 集群
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka  # 集群版
 #--------------Feign负载均衡配置 配置全局超时时间 毫秒单位   根据业务酌情配置
 ribbon:
   ConnectTimeout: 50000 #请求连接的超时时间，默认时间为1秒
@@ -22,4 +22,4 @@ logging:
 feign:
   client:
     config:
-       cloud-payment-service.loggerLevel: full  #cloud-payment-service为feginName
+      cloud-payment-service.loggerLevel: full  #cloud-payment-service为feginName

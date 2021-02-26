@@ -51,7 +51,6 @@ public class OrderController {
         return restTemplate.getForObject(PAYMENT_URL + "/payment/consul", String.class);
     }
 
-
     /**
     * 需要注释掉@LoadBalance注解
     * */
@@ -65,6 +64,12 @@ public class OrderController {
         URI uri = instance.getUri();
 
         return restTemplate.getForObject(uri + "/payment/consul", String.class);
+    }
+
+
+    @RequestMapping("/payment/zipkin")
+    public String paymentZipkin() {
+        return restTemplate.getForObject(PAYMENT_URL + "/payment/zipkin", String.class);
     }
 
 }
