@@ -31,6 +31,7 @@
         <module>alibaba-provider-nacos-payment-9001</module>
         <module>alibaba-provider-nacos-payment-9002</module>
         <module>alibaba-consumer-nacos-order-83</module>
+        <module>alibaba-config-nacos-client-3377</module>
     </modules>
     <!-- 统一管理jar包版本 -->
     <properties>
