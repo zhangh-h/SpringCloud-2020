@@ -8,10 +8,11 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
       config:
-        server-addr: 127.0.0.1:8848
+        #server-addr: 127.0.0.1:8848
         file-extension: yaml #指定文件格式
         group: DEV_GROUP #配置文件分组
-        namespace: 400f092e-0477-4d97-a1de-a45a39b99251 #配置文件名命空间
+        namespace: 0e30dc2b-55ce-4673-b0e6-1233aa1c3b88 #配置文件名命空间
+        server-addr: 192.168.174.133:1111  #Nginx代理地址
 
 # ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
 # nacos-config-client-dev.yaml
