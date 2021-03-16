@@ -1,0 +1,32 @@
+server:
+  port: 8401
+spring:
+  application:
+    name: alibaba-sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.174.133:1111   #nginx负载注册地址
+    sentinel:
+        transport:
+          dashboard: 127.0.0.1:8080 #sentinel注册地址
+          port: 8719 #默认端口从8719开始，当端口被占用，端口+1，直到找到未被占用的端口
+        #sentinel规则持久化至nacos,只针对流控规则推拉到nacos中有效
+        datasource:
+          ds1:
+            nacos:
+              server-addr: 192.168.174.133:1111
+              dataId: alibaba-sentinel-service
+              groupId: DEFAULT_GROUP
+              data-type: json
+              rule-type: flow
+
+feign:
+  sentinel:
+  enabled: true
+
+management:
+  endpoints:
+    web:
+    exposure:
+    include: '*'   #暴露相关接口，去调用
